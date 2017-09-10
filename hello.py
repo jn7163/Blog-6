@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import os
 
-from flask import Flask, flash, redirect, render_template, session, url_for
+from flask import Flask, redirect, render_template, session, url_for
 from flask_bootstrap import Bootstrap
+from flask_migrate import Migrate, MigrateCommand
 from flask_moment import Moment
 from flask_script import Manager, Shell
 from flask_sqlalchemy import SQLAlchemy
@@ -23,6 +24,8 @@ db = SQLAlchemy(app)
 manager = Manager(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
+migrate = Migrate(app, db)
+manager.add_command('db', MigrateCommand)
 
 
 class Role(db.Model):
