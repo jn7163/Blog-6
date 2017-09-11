@@ -1,3 +1,4 @@
+import time
 import unittest
 
 from app import db
@@ -39,3 +40,11 @@ class UserModelTestCase(unittest.TestCase):
         db.session.commit()
         token = u1.generate_confirmation_token()
         self.assertFalse(u2.confirm(token))
+
+    def test_expired_confirmation_token(self):
+        u = User(password='cat')
+        db.session.add(u)
+        db.session.commit()
+        token = u.generate_confirmation_token(1)
+        time.sleep(2)
+        self.assertFalse(u.confirm(token))
