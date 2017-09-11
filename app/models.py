@@ -59,8 +59,10 @@ class User(UserMixin, db.Model):
         if self.role is None:
             if self.email == current_app.config['BLOG_ADMIN']:
                 self.role = Role.query.filter_by(permissions=0xff).first()
+                print(self.role)
             if self.role is None:
                 self.role = Role.query.filter_by(default=True).first()
+                print(self.role)
 
     @property
     def password(self):
@@ -109,7 +111,7 @@ class Permission:
     COMMENT = 0x02
     WRITE_ARTICLES = 0x04
     MODERATE_COMMENTS = 0x08
-    ADMINISTER = 0x08
+    ADMINISTER = 0x80
 
 
 class AnonymousUser(AnonymousUserMixin):
