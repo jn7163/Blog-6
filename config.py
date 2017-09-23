@@ -11,6 +11,7 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     BLOG_POSTS_PER_PAGE = 20
+    BLOG_FOLLOWERS_PER_PAGE = 50
 
     @staticmethod
     def init_app(app):
