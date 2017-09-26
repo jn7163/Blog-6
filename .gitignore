@@ -101,6 +101,7 @@ ENV/
 .mypy_cache/
 .directory
 hello.py
-*.sqlite
+2data-dev.sqlite
+data-test.sqlite
 migrations2/
 .env
