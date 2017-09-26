@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
-    SSL_DISABLE = False
+    # SSL_DISABLE = False
     BLOG_MAIL_SUBJECT_PREFIX = '[Blog]'
     BLOG_MAIL_SENDER = 'Blog Admin <WincerChan@gmail.com>'
     BLOG_ADMIN = os.environ.get('BLOG_ADMIN')
